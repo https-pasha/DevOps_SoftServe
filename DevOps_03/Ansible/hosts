@@ -1,0 +1,6 @@
+[terraform_servers]
+
+s1 ansible_host=104.197.101.217 ansible_ssh_user=labime_infini
+s2 ansible_host=34.67.209.69  ansible_ssh_user=labime_infini
+
+
