@@ -1,0 +1,20 @@
+---
+  - name: install mysql
+    apt: name={{ item }}
+         update_cache=yes
+         state=latest
+    with_items:
+     - mysql-server
+     - python3-pymysql
+  - name: create database called 'labime_infini'
+    community.mysql.mysql_db:
+      login_unix_socket: /var/run/mysqld/mysqld.sock
+      name: labime_infini
+      state: present
+  - name: create db user with all privileges
+    community.mysql.mysql_user:
+      login_unix_socket: /var/run/mysqld/mysqld.sock
+      name: labime_infini
+      password: password
+      priv: '*.*:ALL,GRANT'
+      state: present
