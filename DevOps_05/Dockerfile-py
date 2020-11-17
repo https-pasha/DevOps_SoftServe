@@ -1,0 +1,18 @@
+FROM python:3.7
+MAINTAINER "kreeptos@gmail.com"
+
+WORKDIR /flask
+RUN apt update
+RUN apt install python-pip -y 
+
+RUN mkdir /flask/templates
+
+ADD app.py /flask/
+ADD index.html /flask/templates/
+
+RUN apt update
+RUN pip install flask
+
+EXPOSE 5000
+
+CMD ["python3","/flask/app.py"]
